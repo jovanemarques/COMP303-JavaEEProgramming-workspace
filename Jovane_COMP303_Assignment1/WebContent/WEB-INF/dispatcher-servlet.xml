@@ -26,6 +26,4 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<bean id="PizzaBean" class="ca.centennialcollege.PizzaBean" />
 
-	<mvc:resources mapping="/assets/**"
-		location="/assets/theme1/" cache-period="31556926" />
 </beans>

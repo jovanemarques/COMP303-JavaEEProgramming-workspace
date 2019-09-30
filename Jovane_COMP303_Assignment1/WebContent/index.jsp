@@ -15,30 +15,44 @@
 	<script type="text/javascript"
 		src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<form action="placeOrder.html" method="post">
-		<div class="container">
+		<div class="container" style="background-color: #009246">
 			<div class="form-group">
-				<h1>Online Pizza Delivery</h1>
+				&nbsp;
+			</div>
+			<div class="form-group">
+				<h1 style="color: #ce2b37;">Online Pizza Delivery</h1>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<input type=text class="form-control" name="firstName"
+					<input type="text" class="form-control" name="firstName"
 						placeholder="First Name">
 				</div>
 				<div class="form-group col-md-6">
-					<input type=text class="form-control" name="lastName"
+					<input type="text" class="form-control" name="lastName"
 						placeholder="Last Name">
 				</div>
 			</div>
 			<div class="form-group">
-				<input type=text class="form-control" name="streetAddress"
+				<input type="text" class="form-control" name="streetAddress"
 					placeholder="Street Address">
 			</div>
 			<div class="form-group">
-				<input type=text class="form-control" name="streetAddressLine2"
+				<input type="text" class="form-control" name="streetAddressLine2"
 					placeholder="Street Address Line 2">
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-dark btn-lg btn-block">Order</button>
+				<input type="text" class="form-control" name="postalCode"
+					placeholder="Postal Code">
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" name="email"
+					placeholder="Email">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-danger btn-lg btn-block">Order</button>
+			</div>
+			<div class="form-group">
+				&nbsp;
 			</div>
 			<!--table>
 			<tr>

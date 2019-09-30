@@ -23,6 +23,8 @@ public class PizzaController {
 		pizzaBean.setLastName(request.getParameter("lastName"));
 		pizzaBean.setStreetAddress(request.getParameter("streetAddress"));
 		pizzaBean.setStreetAddressLine2(request.getParameter("streetAddressLine2"));
+		//pizzaBean.setPostalCode(request.getParameter("postalCode"));
+		//pizzaBean.setEmail(request.getParameter("email"));
 		
 		//String firstName = request.getParameter("firstName");
 		//String lastName = request.getParameter("lastName");
