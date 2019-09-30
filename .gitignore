@@ -1,0 +1,6 @@
+**/bin/*
+**/.DS_Store
+**/build/*
+**/.settings/*
+**/target/*
+/.metadata/
