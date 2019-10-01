@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-webflux-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-web-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-tx-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-test-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-orm-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-messaging-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-jdbc-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-jcl-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-expression-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-core-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-context-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-beans-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/spring-aop-5.1.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/media/files/jovane/centennial/2019-Fall/JavaEE/projects/libs/commons-logging-1.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
