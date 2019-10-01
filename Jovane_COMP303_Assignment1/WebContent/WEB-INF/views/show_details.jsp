@@ -29,14 +29,26 @@
 			<h1 style="color: #ce2b37;">Pizza Delivery: Your order</h1>
 		</div>
 		<div class="form-row">
-			<div class="form-group col-md-2">Full Name:</div>
-			<div class="form-group col-md-10" style="color: white;">${pizzaB.firstName}
+			<div class="form-group col-md-3">Full Name:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.firstName}
 				${pizzaB.lastName}</div>
 		</div>
 		<div class="form-row">
-			<div class="form-group col-md-2">Full Street Address:</div>
-			<div class="form-group col-md-10" style="color: white;">${pizzaB.streetAddress}
+			<div class="form-group col-md-3">Full Street Address:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.streetAddress}
 				${pizzaB.streetAddressLine2}</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">Postal Code:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.postalCode}</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">Phone Number:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.phoneNumber}</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">Email:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.email}</div>
 		</div>
 	</div>
 </body>
