@@ -1,0 +1,10 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="employeeManager" class="com.spring.EmployeeManager">
+		<constructor-arg>
+			<ref bean="faculty"/>
+		</constructor-arg>
+	</bean>
+	<bean id="faculty" class="com.spring.Faculty"/>
+</beans> 
