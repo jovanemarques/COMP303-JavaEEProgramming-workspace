@@ -1,7 +1,5 @@
 package ca.centennialcollege;
 
-import java.util.ArrayList;
-
 public class PizzaBean {
 	private String firstName;
 	private String lastName;
@@ -11,7 +9,7 @@ public class PizzaBean {
 	private String postalCode;
 	private String phoneNumber;
 	private String email;
-	private ArrayList<String> toppings;
+	private String[] toppings;
 	private String payment;
 
 	public String getFirstName() {
@@ -78,12 +76,12 @@ public class PizzaBean {
 		this.email = email;
 	}
 
-	public ArrayList<String> getToppings() {
+	public String[] getToppings() {
 		return toppings;
 	}
 
-	public void setToppings(ArrayList<String> toppings) {
-		this.toppings = toppings;
+	public void setToppings(String[] strings) {
+		this.toppings = strings;
 	}
 
 	public String getPayment() {

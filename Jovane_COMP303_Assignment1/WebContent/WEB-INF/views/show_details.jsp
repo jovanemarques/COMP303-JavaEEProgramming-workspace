@@ -1,7 +1,4 @@
-
-<%
-	//@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
-%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,6 +36,10 @@
 				${pizzaB.streetAddressLine2}</div>
 		</div>
 		<div class="form-row">
+			<div class="form-group col-md-3">Province:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.province}</div>
+		</div>
+		<div class="form-row">
 			<div class="form-group col-md-3">Postal Code:</div>
 			<div class="form-group col-md-9" style="color: white;">${pizzaB.postalCode}</div>
 		</div>
@@ -49,6 +50,18 @@
 		<div class="form-row">
 			<div class="form-group col-md-3">Email:</div>
 			<div class="form-group col-md-9" style="color: white;">${pizzaB.email}</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">Toppings:</div>
+			<div class="form-group col-md-9" style="color: white;">
+				<c:forEach items="${pizzaB.toppings}" var="topping">
+					<c:out value="${topping}" />, 
+				</c:forEach>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">Payment:</div>
+			<div class="form-group col-md-9" style="color: white;">${pizzaB.payment}</div>
 		</div>
 	</div>
 </body>

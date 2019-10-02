@@ -67,21 +67,21 @@
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-switch">
 						<input type="checkbox" class="custom-control-input"
-							id="customSwitch0"> <label class="custom-control-label"
+							id="customSwitch0" name="toppings" value="Pepperoni"> <label class="custom-control-label"
 							for="customSwitch0">1. Pepperoni</label>
 					</div>
 				</div>
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-switch">
 						<input type="checkbox" class="custom-control-input"
-							id="customSwitch1"> <label class="custom-control-label"
+							id="customSwitch1" name="toppings" value="Vegetarian"> <label class="custom-control-label"
 							for="customSwitch1">2. Vegetarian</label>
 					</div>
 				</div>
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-switch">
 						<input type="checkbox" class="custom-control-input"
-							id="customSwitch2"> <label class="custom-control-label"
+							id="customSwitch2" name="toppings" value="Cheese"> <label class="custom-control-label"
 							for="customSwitch2">3. Cheese</label>
 					</div>
 				</div>
@@ -92,7 +92,7 @@
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-radio">
 						<input type="radio" class="custom-control-input"
-							id="customControlValidation0" name="radio-stacked" required>
+							id="customControlValidation0" name="payments" value="Master Card" required>
 						<label class="custom-control-label" for="customControlValidation0">Master
 							Card</label>
 					</div>
@@ -100,14 +100,14 @@
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-radio">
 						<input type="radio" class="custom-control-input"
-							id="customControlValidation1" name="radio-stacked" required>
+							id="customControlValidation1" name="payments" value="Visa" required>
 						<label class="custom-control-label" for="customControlValidation1">Visa</label>
 					</div>
 				</div>
 				<div class="form-group col-md-4">
 					<div class="custom-control custom-radio">
 						<input type="radio" class="custom-control-input"
-							id="customControlValidation2" name="radio-stacked" required>
+							id="customControlValidation2" name="payments" value="America Express" required>
 						<label class="custom-control-label" for="customControlValidation2">America
 							Express</label>
 					</div>

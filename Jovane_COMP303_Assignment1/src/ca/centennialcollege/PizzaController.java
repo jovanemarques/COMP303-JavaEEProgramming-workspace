@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class PizzaController {
 	@RequestMapping("/placeOrder")
 	public ModelAndView placeOrder(HttpServletRequest request, HttpServletResponse response) {
-		// ApplicationContext ctx = new
-		// ClassPathXmlApplicationContext("WebContent/WEB-INF/dispatcher-servlet.xml");
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 		PizzaBean pizzaBean = ctx.getBean("PizzaBean", PizzaBean.class);
 
@@ -24,13 +22,13 @@ public class PizzaController {
 		pizzaBean.setLastName(request.getParameter("lastName"));
 		pizzaBean.setStreetAddress(request.getParameter("streetAddress"));
 		pizzaBean.setStreetAddressLine2(request.getParameter("streetAddressLine2"));
+		pizzaBean.setProvince(request.getParameter("province"));
 		pizzaBean.setPostalCode(request.getParameter("postalCode"));
 		pizzaBean.setPhoneNumber(request.getParameter("phoneNumber"));
 		pizzaBean.setEmail(request.getParameter("email"));
+		pizzaBean.setToppings(request.getParameterValues("toppings"));
+		pizzaBean.setPayment(request.getParameter("payments"));
 
-		// String firstName = request.getParameter("firstName");
-		// String lastName = request.getParameter("lastName");
-		// String streetAddress = request.getParameter("streetAddress");
 		ModelAndView view = new ModelAndView("show_details");
 		view.addObject("pizzaB", pizzaBean);
 		return view;
