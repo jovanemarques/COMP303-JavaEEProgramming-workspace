@@ -25,11 +25,13 @@
 		<div class="form-group">
 			<h1 style="color: #ce2b37;">Pizza Delivery: Your order</h1>
 		</div>
+		<!-- showing first name and last name as full name -->
 		<div class="form-row">
 			<div class="form-group col-md-3">Full Name:</div>
 			<div class="form-group col-md-9" style="color: white;">${pizzaB.firstName}
 				${pizzaB.lastName}</div>
 		</div>
+		<!-- showing address part 1 and 2 as an uniform address -->
 		<div class="form-row">
 			<div class="form-group col-md-3">Full Street Address:</div>
 			<div class="form-group col-md-9" style="color: white;">${pizzaB.streetAddress}
@@ -54,6 +56,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-3">Toppings:</div>
 			<div class="form-group col-md-9" style="color: white;">
+				<!-- showing all chosen toppings -->
 				<c:forEach items="${pizzaB.toppings}" var="topping">
 					<c:out value="${topping}" />, 
 				</c:forEach>

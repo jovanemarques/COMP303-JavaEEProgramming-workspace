@@ -1,5 +1,6 @@
 package ca.centennialcollege;
 
+//bean responsible for hold the pizza order informations
 public class PizzaBean {
 	private String firstName;
 	private String lastName;

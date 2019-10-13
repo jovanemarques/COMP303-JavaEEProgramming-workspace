@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<!-- form configuration pointing to the controller -->
 	<form action="placeOrder.html" method="post">
 		<div class="container" style="background-color: #009246">
 			<div class="form-group">&nbsp;</div>
@@ -50,6 +51,7 @@
 			</div>
 			<div class="form-row" style="color: white;">
 				<div class="form-group col-md-9">
+					<!-- phone with validation -->
 					<input type="tel" class="form-control" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
 						placeholder="Phone Number" required>
 				</div>
