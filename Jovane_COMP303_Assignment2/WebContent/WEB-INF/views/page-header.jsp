@@ -1,1 +1,1 @@
-<h3>You are successfully logged in <%=request.getParameter("username") %></h3>
+<h3>You are successfully logged in as <a href="profile.html"><%=request.getParameter("username") %></a></h3>

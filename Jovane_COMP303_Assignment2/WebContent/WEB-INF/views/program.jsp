@@ -11,7 +11,7 @@
 	<jsp:include page="page-header.jsp">
 		<jsp:param name="username" value="${username}" />
 	</jsp:include>
-	<form action="" method="post">
+	<form action="checkout.html" method="post">
 		<table>
 			<tr>
 				<td>Which program are you applying for?</td>
@@ -27,7 +27,7 @@
 					American Express<br /></td>
 			</tr>
 		</table>
-		<input type="submit" value="Pay" />
+		<input type="submit" value="Check Out" />
 	</form>
 </body>
 </html>

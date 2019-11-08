@@ -36,6 +36,16 @@ public class HomeController {
 	public ModelAndView signup(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("signup");
 	}
+	
+	@RequestMapping("/checkout")
+	public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("checkout");
+	}
+	
+	@RequestMapping("/profile")
+	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("profile");
+	}
 
 	@RequestMapping("/signin")
 	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response) {
