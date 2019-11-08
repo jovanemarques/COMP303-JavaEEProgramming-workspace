@@ -27,12 +27,12 @@
 		    <div>
 		    <label for="address">Address</label> <input type="text"
 		           class="form-control" id="address" name="address" 
-		           placeholder="Type Address"> 
+		           placeholder="Address"> 
 		    </div>
       		 <div>
 		    <label for="city">City</label> <input type="text"
 		           class="form-control" id="city" name="city" 
-		           placeholder="Type City"> 
+		           placeholder="City"> 
 		    </div>
    			<div>
 		    <label for="postalCode">Postal Code</label> <input type="text"
