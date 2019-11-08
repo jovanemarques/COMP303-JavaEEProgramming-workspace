@@ -8,8 +8,9 @@
 <title>Program</title>
 </head>
 <body>
-	<h3>You are successfully logged in </h3>
-	<h3>${message}</h3>
+	<jsp:include page="page-header.jsp">
+		<jsp:param name="username" value="${username}" />
+	</jsp:include>
 	<form action="" method="post">
 		<table>
 			<tr>

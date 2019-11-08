@@ -48,6 +48,7 @@ public class HomeController {
 			ProgramService programService = new ProgramService();
 			List<Program> programs = programService.findAll();
 			view = new ModelAndView("program");
+			view.addObject("username", username);
 			view.addObject("programs", programs);
 		} else {
 			view = new ModelAndView("login");
