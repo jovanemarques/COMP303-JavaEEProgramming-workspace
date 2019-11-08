@@ -1,5 +1,7 @@
 package ca.centennialcollege.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,20 +11,23 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
+import ca.centennialcollege.model.Program;
 import ca.centennialcollege.model.Student;
+import ca.centennialcollege.service.ProgramService;
 import ca.centennialcollege.service.StudentService;
 
 @Controller
 public class HomeController {
-	private static final Student studentLoggedIn = null;
+	private static Student studentLoggedIn = null;
+	private StudentService studentService = new StudentService();
 
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView view = null;
-		if (studentLoggedIn == null) {
+		if (getStudentloggedin() == null) {
 			view = new ModelAndView("login");
 		} else {
-			view = new ModelAndView("program");
+			view = new ModelAndView("program.html");
 		}
 		return view;
 	}
@@ -34,15 +39,20 @@ public class HomeController {
 
 	@RequestMapping("/signin")
 	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response) {
-		String view = null;
+		ModelAndView view = null;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (username.equals("a") && password.equals("1")) {
-			view = "program";
+		Student stu = studentService.findByUsernameAndPassword(username, password);
+		if (stu != null) {
+			studentLoggedIn = stu;
+			ProgramService programService = new ProgramService();
+			List<Program> programs = programService.findAll();
+			view = new ModelAndView("program");
+			view.addObject("programs", programs);
 		} else {
-			view = "login";
+			view = new ModelAndView("login");
 		}
-		return new ModelAndView(view);
+		return view;
 	}
 
 	@RequestMapping("/register")
@@ -57,10 +67,17 @@ public class HomeController {
 		student.setAddress(request.getParameter("address"));
 		student.setCity(request.getParameter("city"));
 		student.setPostalCode(request.getParameter("postalCode"));
-		StudentService studentService = new StudentService();
 		Student newStudent = studentService.save(student);
 		ModelAndView view = new ModelAndView("login");
 		view.addObject("newStudent", newStudent);
 		return view;
+	}
+
+	public static Student getStudentloggedin() {
+		return studentLoggedIn;
+	}
+	
+	public static void setStudentloggedin(Student student) {
+		studentLoggedIn = student;
 	}
 }

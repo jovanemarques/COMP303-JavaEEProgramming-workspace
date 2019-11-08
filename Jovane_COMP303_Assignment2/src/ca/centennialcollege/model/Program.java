@@ -1,6 +1,11 @@
 package ca.centennialcollege.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Program {
+	@Id
 	private String programCode;
 	private String programName;
 	private String duration;

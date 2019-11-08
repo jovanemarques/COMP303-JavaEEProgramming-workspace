@@ -43,4 +43,15 @@ public class StudentService implements IStudentService {
 		return student;
 	}
 
+	public Student findByUsernameAndPassword(String username, String password) {
+		Student stu = null;
+		List<Student> list = em
+				.createQuery("select s from Student s where s.username = :username and s.password = :password ")
+				.setParameter("username", username).setParameter("password", password).setMaxResults(1).getResultList();
+		if (list.size() > 0) {
+			stu = list.get(0);
+		}
+		return stu;
+	}
+
 }
