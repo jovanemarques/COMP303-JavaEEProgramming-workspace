@@ -22,28 +22,41 @@
 			</button>
 		</div>
 	</c:if>
+	<c:if test="${msg_fail != null}">
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert">${msg_fail}
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</c:if>
 
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<form action="signin.html" method="post">
 		<div class="container">
-			<div class="form-group">
-				<h2>Login</h2>
-			</div>
-			<div class="form-group">
-				<label for="username">Username</label> <input type="text"
-					class="form-control" id="username" name="username"
-					placeholder="Enter Username">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label> <input type="password"
-					class="form-control" id="password" name="password"
-					placeholder="Password">
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Sign In</button>
-				<a href="signup.html">Sign Up</a>
+			<div class="row justify-content-md-center">
+				<div class="col-5">
+					<div class="form-group">
+						<h2>Login</h2>
+					</div>
+					<div class="form-group">
+						<input type="text"
+							class="form-control" id="username" name="username"
+							placeholder="Username">
+					</div>
+					<div class="form-group">
+						<input type="password"
+							class="form-control" id="password" name="password"
+							placeholder="Password">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Sign In</button>
+						<a href="signup.html">Sign Up</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>

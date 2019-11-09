@@ -22,27 +22,27 @@
 			<div class="form-group">
 				<label for="username">Username</label> <input type="text"
 					class="form-control" id="username" name="username"
-					placeholder="Username">
+					placeholder="Username" required>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label> <input type="password"
 					class="form-control" id="password" name="password"
-					placeholder="Password">
+					placeholder="Password" required>
 			</div>
 			<div class="form-group">
 				<label for="password2">Confirm Password</label> <input
 					type="password" class="form-control" id="password2"
-					name="password2" placeholder="Confirm Password">
+					name="password2" placeholder="Confirm Password" required>
 			</div>
 			<div class="form-group">
 				<label for="firstName">First Name</label> <input type="text"
 					class="form-control" id="firstName" name="firstName"
-					placeholder="First Name">
+					placeholder="First Name" required>
 			</div>
 			<div class="form-group">
 				<label for="lastName">Last Name</label> <input type="text"
 					class="form-control" id="lastName" name="lastName"
-					placeholder="Last Name">
+					placeholder="Last Name" required>
 			</div>
 			<div class="form-group">
 				<label for="address">Address</label> <input type="text"

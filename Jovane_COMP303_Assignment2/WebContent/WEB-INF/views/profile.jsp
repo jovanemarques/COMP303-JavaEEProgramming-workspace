@@ -25,6 +25,26 @@
 				<h2>Profile</h2>
 			</div>
 			<div class="form-group">
+				<label for="username">Username</label> <input type="text"
+					class="form-control" id="username" name="username"
+					placeholder="Username" value="${student.username}">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label> <input type="text"
+					class="form-control" id="password" name="password"
+					placeholder="Password" value="${student.password}">
+			</div>
+			<div class="form-group">
+				<label for="firstName">First Name</label> <input type="text"
+					class="form-control" id="firstName" name="firstName"
+					placeholder="First Name" value="${student.firstName}">
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label> <input type="text"
+					class="form-control" id="lastName" name="lastName"
+					placeholder="Last Name" value="${student.lastName}">
+			</div>
+			<div class="form-group">
 				<label for="address">Address</label> <input type="text"
 					class="form-control" id="address" name="address"
 					placeholder="Address" value="${student.address}">

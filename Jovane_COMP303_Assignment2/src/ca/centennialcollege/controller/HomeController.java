@@ -1,6 +1,5 @@
 package ca.centennialcollege.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,20 +8,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
-import ca.centennialcollege.model.Enrollment;
 import ca.centennialcollege.model.Program;
 import ca.centennialcollege.model.Student;
-import ca.centennialcollege.service.EnrollmentService;
 import ca.centennialcollege.service.ProgramService;
 import ca.centennialcollege.service.StudentService;
 
 @Controller
 public class HomeController {
-	private StudentService studentService = new StudentService();
 
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -35,7 +29,6 @@ public class HomeController {
 			List<Program> programs = programService.findAll();
 			view = new ModelAndView("program");
 			view.addObject("programs", programs);
-			view = new ModelAndView("program");
 		}
 		return view;
 	}
@@ -45,57 +38,12 @@ public class HomeController {
 		return new ModelAndView("signup");
 	}
 
-	@RequestMapping("/checkout")
-	public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		ModelAndView view = new ModelAndView("checkout");
-		Enrollment enrollment = new Enrollment();
-		ProgramService programService = new ProgramService();
-		EnrollmentService enrollmentService = new EnrollmentService();
-		Program program = programService.findOne(request.getParameter("rdProg"));
-		Student student = ((Student) session.getAttribute("student"));
-		enrollment.setProgramCode(program.getProgramCode());
-		enrollment.setStudentId(student.getStudentId());
-		enrollment.setAmountPaid(program.getFee());
-		enrollment.setStatus("In progress");
-		enrollment.setStartDate(new Date());
-		Enrollment newEnrollment = enrollmentService.save(enrollment);
-		view.addObject("newEnrollment", newEnrollment);
-		// String paymentMethod = request.getParameter("payment");
-		return view;
-	}
-
-	@RequestMapping("/profile")
-	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		Student student = ((Student) session.getAttribute("student"));
-		return new ModelAndView("profile", "student", student);
-	}
-
-	@RequestMapping("/stu_edit")
-	public ModelAndView stu_edit(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		Student student = ((Student) session.getAttribute("student"));
-		Student stu = ((Student) session.getAttribute("student"));
-		student.setStudentId(stu.getStudentId());
-		student.setFirstName(stu.getFirstName());
-		student.setLastName(stu.getLastName());
-		student.setPassword(stu.getPassword());
-		student.setUsername(stu.getUsername());
-		student.setAddress(request.getParameter("address"));
-		student.setCity(request.getParameter("city"));
-		student.setPostalCode(request.getParameter("postalCode"));
-		Student newStudent = studentService.save(student);
-		session.setAttribute("student", newStudent);
-		ProgramService programService = new ProgramService();
-		List<Program> programs = programService.findAll();
-		ModelAndView view = new ModelAndView("program");
-		view.addObject("programs", programs);
-		return view;
-	}
-
 	@RequestMapping("/signin")
 	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView view = null;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		StudentService studentService = new StudentService();
 		Student stu = studentService.findByUsernameAndPassword(username, password);
 		if (stu != null) {
 			// studentLoggedIn = stu;
@@ -107,26 +55,15 @@ public class HomeController {
 			view.addObject("programs", programs);
 		} else {
 			view = new ModelAndView("login");
+			view.addObject("msg_fail", "Login fail");
 		}
 		return view;
 	}
 
-	@RequestMapping("/register")
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) {
-		// WebApplicationContext ctx =
-		// WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
-		// getting the bean from spring context
-		Student student = new Student();
-		student.setUsername(request.getParameter("username"));
-		student.setPassword(request.getParameter("password"));
-		student.setFirstName(request.getParameter("firstName"));
-		student.setLastName(request.getParameter("lastName"));
-		student.setAddress(request.getParameter("address"));
-		student.setCity(request.getParameter("city"));
-		student.setPostalCode(request.getParameter("postalCode"));
-		Student newStudent = studentService.save(student);
-		ModelAndView view = new ModelAndView("login");
-		view.addObject("newStudent", newStudent);
-		return view;
+	@RequestMapping("/signout")
+	public ModelAndView signout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		session.removeAttribute("student");
+		return new ModelAndView("login");
 	}
+
 }
