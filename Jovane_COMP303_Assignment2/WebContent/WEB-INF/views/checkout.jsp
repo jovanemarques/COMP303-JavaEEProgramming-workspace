@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Checkout</title>
 </head>
-<body>Checkout ${newEnrollment.amountPaid}
+<body>Checkout ${newEnrollment.programCode}
+	${newEnrollment.amountPaid} ${newEnrollment.startDate}
+	${newEnrollment.status}
 </body>
 </html>

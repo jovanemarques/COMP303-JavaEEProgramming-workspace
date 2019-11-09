@@ -22,20 +22,18 @@ import ca.centennialcollege.service.StudentService;
 
 @Controller
 public class HomeController {
-	private static Student studentLoggedIn = null;
 	private StudentService studentService = new StudentService();
 
 	@RequestMapping("/index")
 	public ModelAndView index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView view = null;
-		Student student = ((Student)session.getAttribute("student"));
+		Student student = ((Student) session.getAttribute("student"));
 		if (student == null) {
 			view = new ModelAndView("login");
 		} else {
 			ProgramService programService = new ProgramService();
 			List<Program> programs = programService.findAll();
 			view = new ModelAndView("program");
-			view.addObject("username", getStudentloggedin().getUsername());
 			view.addObject("programs", programs);
 			view = new ModelAndView("program");
 		}
@@ -54,7 +52,7 @@ public class HomeController {
 		ProgramService programService = new ProgramService();
 		EnrollmentService enrollmentService = new EnrollmentService();
 		Program program = programService.findOne(request.getParameter("rdProg"));
-		Student student = ((Student)session.getAttribute("student"));
+		Student student = ((Student) session.getAttribute("student"));
 		enrollment.setProgramCode(program.getProgramCode());
 		enrollment.setStudentId(student.getStudentId());
 		enrollment.setAmountPaid(program.getFee());
@@ -67,20 +65,29 @@ public class HomeController {
 	}
 
 	@RequestMapping("/profile")
-	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("profile", "student", getStudentloggedin());
+	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		Student student = ((Student) session.getAttribute("student"));
+		return new ModelAndView("profile", "student", student);
 	}
 
 	@RequestMapping("/stu_edit")
-	public ModelAndView stu_edit(HttpServletRequest request, HttpServletResponse response) {
-		Student student = new Student();
-		student.setStudentId(getStudentloggedin().getStudentId());
+	public ModelAndView stu_edit(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		Student student = ((Student) session.getAttribute("student"));
+		Student stu = ((Student) session.getAttribute("student"));
+		student.setStudentId(stu.getStudentId());
+		student.setFirstName(stu.getFirstName());
+		student.setLastName(stu.getLastName());
+		student.setPassword(stu.getPassword());
+		student.setUsername(stu.getUsername());
 		student.setAddress(request.getParameter("address"));
 		student.setCity(request.getParameter("city"));
 		student.setPostalCode(request.getParameter("postalCode"));
 		Student newStudent = studentService.save(student);
+		session.setAttribute("student", newStudent);
+		ProgramService programService = new ProgramService();
+		List<Program> programs = programService.findAll();
 		ModelAndView view = new ModelAndView("program");
-		setStudentloggedin(newStudent);
+		view.addObject("programs", programs);
 		return view;
 	}
 
@@ -91,7 +98,7 @@ public class HomeController {
 		String password = request.getParameter("password");
 		Student stu = studentService.findByUsernameAndPassword(username, password);
 		if (stu != null) {
-			//studentLoggedIn = stu;
+			// studentLoggedIn = stu;
 			session.setAttribute("student", stu);
 			ProgramService programService = new ProgramService();
 			List<Program> programs = programService.findAll();
@@ -106,9 +113,10 @@ public class HomeController {
 
 	@RequestMapping("/register")
 	public ModelAndView register(HttpServletRequest request, HttpServletResponse response) {
-		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		// WebApplicationContext ctx =
+		// WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 		// getting the bean from spring context
-		Student student = ctx.getBean("Student", Student.class);
+		Student student = new Student();
 		student.setUsername(request.getParameter("username"));
 		student.setPassword(request.getParameter("password"));
 		student.setFirstName(request.getParameter("firstName"));
@@ -120,13 +128,5 @@ public class HomeController {
 		ModelAndView view = new ModelAndView("login");
 		view.addObject("newStudent", newStudent);
 		return view;
-	}
-
-	public static Student getStudentloggedin() {
-		return studentLoggedIn;
-	}
-
-	public static void setStudentloggedin(Student student) {
-		studentLoggedIn = student;
 	}
 }
