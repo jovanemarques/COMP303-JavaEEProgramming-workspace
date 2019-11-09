@@ -14,11 +14,11 @@
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript"
 		src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<form action="stu_edit" method="post">
+	<form action="stu_edit.html" method="post">
 		<div class="container">
 			<div class="form-group">
 				<jsp:include page="page-header.jsp">
-					<jsp:param name="username" value="${username}" />
+					<jsp:param name="username" value="${student.username}" />
 				</jsp:include>
 			</div>
 			<div class="form-group">
@@ -27,16 +27,16 @@
 			<div class="form-group">
 				<label for="address">Address</label> <input type="text"
 					class="form-control" id="address" name="address"
-					placeholder="Address">
+					placeholder="Address" value="${student.address}">
 			</div>
 			<div class="form-group">
 				<label for="city">City</label> <input type="text"
-					class="form-control" id="city" name="city" placeholder="City">
+					class="form-control" id="city" name="city" placeholder="City" value="${student.city}">
 			</div>
 			<div class="form-group">
 				<label for="postalCode">Postal Code</label> <input type="text"
 					class="form-control" id="postalCode" name="postalCode"
-					placeholder="Postal Code">
+					placeholder="Postal Code" value="${student.postalCode}">
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Save</button>

@@ -8,9 +8,7 @@
 <title>Program</title>
 </head>
 <body>
-	<jsp:include page="page-header.jsp">
-		<jsp:param name="username" value="${username}" />
-	</jsp:include>
+	<jsp:include page="page-header.jsp"/>
 	<form action="checkout.html" method="post">
 		<table>
 			<tr>

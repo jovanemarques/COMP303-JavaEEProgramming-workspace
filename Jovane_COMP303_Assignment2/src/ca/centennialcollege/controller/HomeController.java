@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +26,17 @@ public class HomeController {
 	private StudentService studentService = new StudentService();
 
 	@RequestMapping("/index")
-	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView view = null;
-		if (getStudentloggedin() == null) {
+		Student student = ((Student)session.getAttribute("student"));
+		if (student == null) {
 			view = new ModelAndView("login");
 		} else {
+			ProgramService programService = new ProgramService();
+			List<Program> programs = programService.findAll();
+			view = new ModelAndView("program");
+			view.addObject("username", getStudentloggedin().getUsername());
+			view.addObject("programs", programs);
 			view = new ModelAndView("program");
 		}
 		return view;
@@ -41,14 +48,15 @@ public class HomeController {
 	}
 
 	@RequestMapping("/checkout")
-	public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView view = new ModelAndView("checkout");
 		Enrollment enrollment = new Enrollment();
 		ProgramService programService = new ProgramService();
 		EnrollmentService enrollmentService = new EnrollmentService();
 		Program program = programService.findOne(request.getParameter("rdProg"));
+		Student student = ((Student)session.getAttribute("student"));
 		enrollment.setProgramCode(program.getProgramCode());
-		enrollment.setStudentId(getStudentloggedin().getStudentId());
+		enrollment.setStudentId(student.getStudentId());
 		enrollment.setAmountPaid(program.getFee());
 		enrollment.setStatus("In progress");
 		enrollment.setStartDate(new Date());
@@ -60,17 +68,31 @@ public class HomeController {
 
 	@RequestMapping("/profile")
 	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("profile");
+		return new ModelAndView("profile", "student", getStudentloggedin());
+	}
+
+	@RequestMapping("/stu_edit")
+	public ModelAndView stu_edit(HttpServletRequest request, HttpServletResponse response) {
+		Student student = new Student();
+		student.setStudentId(getStudentloggedin().getStudentId());
+		student.setAddress(request.getParameter("address"));
+		student.setCity(request.getParameter("city"));
+		student.setPostalCode(request.getParameter("postalCode"));
+		Student newStudent = studentService.save(student);
+		ModelAndView view = new ModelAndView("program");
+		setStudentloggedin(newStudent);
+		return view;
 	}
 
 	@RequestMapping("/signin")
-	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView signin(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView view = null;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		Student stu = studentService.findByUsernameAndPassword(username, password);
 		if (stu != null) {
-			studentLoggedIn = stu;
+			//studentLoggedIn = stu;
+			session.setAttribute("student", stu);
 			ProgramService programService = new ProgramService();
 			List<Program> programs = programService.findAll();
 			view = new ModelAndView("program");
