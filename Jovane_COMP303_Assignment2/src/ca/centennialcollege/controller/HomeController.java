@@ -1,5 +1,6 @@
 package ca.centennialcollege.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +12,10 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
+import ca.centennialcollege.model.Enrollment;
 import ca.centennialcollege.model.Program;
 import ca.centennialcollege.model.Student;
+import ca.centennialcollege.service.EnrollmentService;
 import ca.centennialcollege.service.ProgramService;
 import ca.centennialcollege.service.StudentService;
 
@@ -27,7 +30,7 @@ public class HomeController {
 		if (getStudentloggedin() == null) {
 			view = new ModelAndView("login");
 		} else {
-			view = new ModelAndView("program.html");
+			view = new ModelAndView("program");
 		}
 		return view;
 	}
@@ -36,12 +39,25 @@ public class HomeController {
 	public ModelAndView signup(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("signup");
 	}
-	
+
 	@RequestMapping("/checkout")
 	public ModelAndView checkout(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("checkout");
+		ModelAndView view = new ModelAndView("checkout");
+		Enrollment enrollment = new Enrollment();
+		ProgramService programService = new ProgramService();
+		EnrollmentService enrollmentService = new EnrollmentService();
+		Program program = programService.findOne(request.getParameter("rdProg"));
+		enrollment.setProgramCode(program.getProgramCode());
+		enrollment.setStudentId(getStudentloggedin().getStudentId());
+		enrollment.setAmountPaid(program.getFee());
+		enrollment.setStatus("In progress");
+		enrollment.setStartDate(new Date());
+		Enrollment newEnrollment = enrollmentService.save(enrollment);
+		view.addObject("newEnrollment", newEnrollment);
+		// String paymentMethod = request.getParameter("payment");
+		return view;
 	}
-	
+
 	@RequestMapping("/profile")
 	public ModelAndView profile(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("profile");
@@ -87,7 +103,7 @@ public class HomeController {
 	public static Student getStudentloggedin() {
 		return studentLoggedIn;
 	}
-	
+
 	public static void setStudentloggedin(Student student) {
 		studentLoggedIn = student;
 	}

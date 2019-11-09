@@ -20,4 +20,14 @@ public class ProgramService implements IProgramService {
 		return list;
 	}
 
+	public Program findOne(String programCode) {
+		Program program = null;
+		List list = em.createQuery("select p from Program p where p.programCode = :programCode")
+				.setParameter("programCode", programCode).getResultList();
+		if (list.size() > 0) {
+			program = (Program) list.get(0);
+		}
+		return program;
+	}
+
 }

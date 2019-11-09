@@ -6,6 +6,7 @@
 	<persistence-unit name="Jovane_COMP303_Assignment2">
 		<class>ca.centennialcollege.model.Student</class>
 		<class>ca.centennialcollege.model.Program</class>
+		<class>ca.centennialcollege.model.Enrollment</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
