@@ -1,11 +1,9 @@
 package ca.centennialcollege.assign3.model;
 
-import java.util.Arrays;
-
 public class Passenger {
 	private Integer PassengerId;
 	private String FirstName;
-	private String LastName;	
+	private String LastName;
 	private String Address;
 	private String City;
 	private String Country;
@@ -15,10 +13,16 @@ public class Passenger {
 	public Passenger() {
 	}
 
-	public Passenger(Integer id, String fisrtName, String lastName) {
+	public Passenger(Integer id, String fisrtName, String lastName, String address, String city, String country,
+			String telephone, String email) {
 		this.PassengerId = id;
 		this.FirstName = fisrtName;
 		this.LastName = lastName;
+		this.Address = address;
+		this.City = city;
+		this.Country = country;
+		this.Telephone = telephone;
+		this.Email = email;
 	}
 
 	public String getFirstName() {

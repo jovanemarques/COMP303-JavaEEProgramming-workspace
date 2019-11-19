@@ -12,6 +12,18 @@ public class Flight {
 	private String Duration;
 	private Integer TotalSeats;
 
+	public Flight(Integer id, String airlineName, String departAirport, String arrivalAirport, Date departTime,
+			Date arrivalTime, String duration, Integer totalSeats) {
+		this.FlightId = id;
+		this.AirlineName = airlineName;
+		this.DepartAirport = departAirport;
+		this.ArrivalAirport = arrivalAirport;
+		this.DepartTime = departTime;
+		this.ArrivalTime = arrivalTime;
+		this.Duration = duration;
+		this.TotalSeats = totalSeats;
+	}
+
 	public String getAirlineName() {
 		return AirlineName;
 	}

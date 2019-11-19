@@ -1,5 +1,5 @@
 package ca.centennialcollege.assign3.service;
 
-public class TicketService {
+public class TicketService implements ITicketService {
 
 }

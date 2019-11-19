@@ -16,8 +16,8 @@ public class PassengerController {
 //		return passengerService.findAll();
 //	}
 
-	@GetMapping("/test.html")
-	public String test() {
-		return "OK";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "OK";
+//	}
 }

@@ -4,8 +4,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.stereotype.Service;
+
 import ca.centennialcollege.assign3.model.Passenger;
 
+@Service
 public class PassengerService implements IPassengerService {
 
 	private final Map<Integer, Passenger> passengers = new ConcurrentHashMap<>();
