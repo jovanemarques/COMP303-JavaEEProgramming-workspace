@@ -12,16 +12,29 @@
 </head>
 <body>
 	<jsp:include page="page-header.jsp" />
-	Payment executed successfully
-	<br> Details:
-	<br>programCode - ${newEnrollment.programCode}
-	<br> amountPaid - ${newEnrollment.amountPaid}
-	<br> startDate - ${newEnrollment.startDate}
-	<br> status - ${newEnrollment.status}
-	<br>
-	<form action="index.html">
-		<button type="submit" class="btn btn-primary">Back to
-			Programs List</button>
-	</form>
+	<div class="container">
+		<div class="row">
+			<h2>Payment executed successfully</h2>
+		</div>
+		<div class="row">
+			<b>Program:</b> ${newEnrollment.programCode}
+		</div>
+		<div class="row">
+			<b>Amount Paid:</b> ${newEnrollment.amountPaid}
+		</div>
+		<div class="row">
+			<b>Start Date:</b> ${newEnrollment.startDate}
+		</div>
+		<div class="row">
+			<b>Status:</b> ${newEnrollment.status}
+		</div>
+		<div class="row">
+			<form action="index.html">
+				<button type="submit" class="btn btn-primary">Back to
+					Programs List</button>
+			</form>
+		</div>
+	</div>
+	</div>
 </body>
 </html>
